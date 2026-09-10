@@ -1,369 +1,916 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work Term</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Custom CSS for Button -->
-  <style>
-    html {
-        scroll-behavior: smooth;
-    }
+    <title>My Co-op Experience</title>
 
-    body {
-      background-color: #f8d7da; /* Light pink background */
-      color: #000; /* Black text */
-    }
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    /* NAVBAR STYLES */
-    .navbar {
-      background-color: #191717; /* light grey background */
-      display: flex;
-      justify-content: center;  /* centers the links horizontally */
-      gap: 20px;                /* spacing between links */
-      padding: 15px;
-      margin-top: 20px; 
-    }
+    <!-- Custom CSS -->
+    <style>
 
-    .navbar a {
-      text-decoration: none;
-      color: #9460b7;            /* purple text */
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-      transition: color 0.3s ease;
-    }
+        /* ================================
+           GENERAL
+        ================================= */
 
-    .navbar a:hover {
-      color: #ffffff;           /* darker purple on hover */
-    }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
 
-    h1 {
-    color: #9460b7; /* Light purple color */
-    }
+        body {
+            background: #f7f7f5;
+            color: #181818;
+            font-family: Arial, sans-serif;
+        }
 
-    h2 {
-    color: #9460b7; /* Light purple color */
-    }
+        section {
+            padding: 100px 0;
+        }
 
-    .text-primary {
-      color: #000 !important; /* Ensure text-primary also stays black */
-    }
 
-    /* Custom Light Purple Button */
-    .btn-purple {
-      background-color: #d3a4f3; /* Light purple color */
-      border-color: #d3a4f3;
-      color: #000; /* Text color black */
-    }
+       /* ================================
+          NAVBAR
+        ================================= */
 
-    .btn-purple:hover {
-      background-color: #ffffff; /* White on hover */
-      color: #6f42c1; /* Purple text color on hover */
-      border-color: #6f42c1; /* Purple border on hover */
-    }
+        .navbar {
+            background: #181818;
+            padding: 18px 0;
+        }
 
-    /* Styling for image */
-    .img-fluid {
-      display: block;
-      margin: 0 auto; /* Center the image */
-      max-width: 100%;
-      height: auto; /* Maintain aspect ratio */
-    }
-  </style>
+        .navbar > .container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .navbar-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #cfcfcf !important;
+            transition: 0.3s;
+            padding: 0;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: white !important;
+        }
+
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: #181818;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-label {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 7rem);
+            font-weight: 700;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cfcfcf;
+            max-width: 650px;
+        }
+
+        .hero-meta {
+            margin-top: 50px;
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta small {
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-meta p {
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+
+        /* ================================
+           SECTION HEADINGS
+        ================================= */
+
+        .section-number {
+            font-size: 14px;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 50px;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 750px;
+            line-height: 1.7;
+        }
+
+
+        /* ================================
+           EXPERIENCE CARDS
+        ================================= */
+
+        .info-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            padding: 35px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .info-card-number {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 35px;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+
+        /* ================================
+           SKILLS
+        ================================= */
+
+        .skill {
+            border-top: 1px solid #ccc;
+            padding: 25px 0;
+        }
+
+        .skill-number {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .skill h3 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .skill p {
+            color: #666;
+            margin-top: 10px;
+            max-width: 600px;
+        }
+
+
+        /* ================================
+           TIMELINE
+        ================================= */
+
+        .timeline {
+            border-left: 2px solid #ccc;
+            padding-left: 35px;
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: #181818;
+            border-radius: 50%;
+            position: absolute;
+            left: -42px;
+            top: 7px;
+        }
+
+        .timeline-date {
+            color: #888;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .timeline-item h3 {
+            margin-top: 8px;
+        }
+
+
+        /* ================================
+           REFLECTION
+        ================================= */
+
+        .reflection {
+            background: #181818;
+            color: white;
+        }
+
+        .reflection .section-number {
+            color: #888;
+        }
+
+        .reflection-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+
+        /* ================================
+           QUOTE / HIGHLIGHT
+        ================================= */
+
+        .highlight {
+            border-left: 4px solid #181818;
+            padding-left: 30px;
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background: #181818;
+            color: #888;
+            padding: 30px 0;
+        }
+        
+
+    </style>
 </head>
+
+
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <a href="#home">Home</a>
-    <a href="#introduction">Introduction</a>
-    <a href="#employer">Employer Info</a>
-    <a href="#job">Job Description</a>
-    <a href="#goals">Goals (Jan–Apr)</a>
-    <a href="#goals-second">Goals (May–Aug)</a>
-    <a href="#projects">Projects</a>
-    <a href="#conclusion">Conclusion</a>
-    <a href="#acknowledgments">Acknowledgments</a>
-  </nav>
+
+
+<!-- ==========================================
+     NAVBAR
+=========================================== -->
+
+<nav class="navbar sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#home">
+            AISHA KHAN
+        </a>
+
+        <div id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#experience">
+                        Experience
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">
+                        Learning Outcomes
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#technology">
+                        Technology
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#reflection">
+                        Reflection
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#conclusions">
+                        Conclusions
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ==========================================
+     HERO
+=========================================== -->
+
+<section id="home" class="hero">
+
+    <div class="container">
+
+        <div class="hero-label">
+            CO-OP EXPERIENCE · 2026
+        </div>
+
+        <h1>
+            Aisha's Co-op<br>
+            at ATS
+        </h1>
+
+        <p class="hero-subtitle">
+            A reflection on my experience, growth, skills,
+            and learning throughout my work term.
+        </p>
+
+
+        <div class="hero-meta">
+
+            <div>
+                <small>Role</small>
+                <p>Toolset Software Developer</p>
+            </div>
+
+            <div>
+                <small>Company</small>
+                <p>ATS Automation</p>
+            </div>
+
+            <div>
+                <small>Term</small>
+                <p>S26</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================
+     EXPERIENCE
+=========================================== -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-number">
+            01 — THE EXPERIENCE
+        </div>
+
+        <h2 class="section-title">
+            Where I worked<br>
+            & what I did.
+        </h2>
+
+        <p class="section-intro mb-5">
+            This website serves as a brief portfolio reflecting on my work term experience at ATS Corporation in the first four months of my eight-month work term.
+            <br>
+            <br>
+        </p>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-card-number">
+                        01
+                    </div>
+
+                    <h3>
+                        My Role
+                    </h3>
+
+                    <p>
+                       I work as a Toolset Software Developer within ATS Corporation's Cambridge Life Sciences division. As a member of the Parts and Services department, I support the development 
+                       and improvement of ERP software functionality, with a focus on creating efficient and user-friendly quoting and pricing solutions. The areas of Computer Science my role most heavily 
+                       exercises is software development, enterprise systems and data integrity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-card-number">
+                        02
+                    </div>
+
+                    <h3>
+                        The Workplace
+                    </h3>
+
+                    <p>
+                        ATS is a global automation and technology leader, supporting the world’s most successful companies by bringing products to market in the life sciences, 
+                        food & beverage, transportation, energy, and consumer product markets. ATS has branches across Canada, the United States and Europe.
+                        I completed my first term in the Cambridge Life Sciences division, in the Parts and Services department. This department is responsible for creating sales quotes 
+                        and managing customer pricing and part shipping. At Cambridge Life Sciences, we focus on handling shipping through the 890 and 875 branch plants. 
+                        ATS' recurring sale-to and ship-to customers include large companies across the world, such as Amazon and others. 
+                      
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-card-number">
+                        03
+                    </div>
+
+                    <h3>
+                        My Work
+                    </h3>
+
+                    <p>
+                        My work involves writing formulas and code to develop new quoting and pricing strategies, with an emphasis on 
+                        finding solutions that are both efficient and user-friendly. I also document how to navigate these pricing tools I develop
+                        for other users in our department to utilize, which limits as much human-error as possible. Once these users obtain the appropriate prices, they include it in their official sales quote to send out 
+                        to customers for approval and confirmation prior to shipping, receiving, handling, and releasing spare parts.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================
+     GOALS AND LEARNING OUTCOMES
+=========================================== -->
+
+<section id="skills" class="bg-white">
+
+    <div class="container">
+
+        <div class="section-number">
+            02 — LEARNING OUTCOMES
+        </div>
+
+        <h2 class="section-title">
+            My Goals<br>
+            and Achievements.
+        </h2>
+
+
+        <div class="skill">
+
+            <div class="row">
+
+                <div class="col-md-2 skill-number">
+                    01 - Critical & Creative Thinking
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Problem Solving</h3>
+                    <p><strong>Outcome:</strong> Achieved</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p>
+                        I developed my ability to approach the pricing and quoting system from a more critical and creative perspective. 
+                        The formulas and changes I developed became part of ATS's new price quoting system. I presented my ideas through 
+                        walkthrough demonstrations and presentations, incorporated feedback from my team, and refined my formulas before 
+                        implementing them in the new quoting environment.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="row">
+
+                <div class="col-md-2 skill-number">
+                    02 - Communication
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Oral Communication</h3>
+                    <p><strong>Outcome:</strong> Achieved</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p>
+                        My oral communication skills improved significantly through regular meetings, demonstrations, and presentations. Throughout the term, 
+                        I presented ideas and progress to my manager and team, including pitching a new application and explaining my price quoting formulas. 
+                        Feedback from my supervisor helped me become more confident in clearly and professionally communicating technical ideas.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="row">
+
+                <div class="col-md-2 skill-number">
+                    03 - Global Understanding
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Global Understanding</h3>
+                    <p><strong>Outcome:</strong> Achieved</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p>
+                        I developed a much broader understanding of ATS's global operations, including its different branches, divisions, pricing systems, currencies, and regulations. 
+                        This became particularly relevant when developing pricing formulas, as different branches had their own rounding rules, currencies, and regulations that needed 
+                        to be considered in the quoting process.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="row">
+
+                <div class="col-md-2 skill-number">
+                    04 - Professional & Ethical Behaviour
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Personal Organization/Time Management</h3>
+                    <p><strong>Outcome:</strong> Achieved</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p>
+                        I strengthened my organization and time-management skills while working primarily remotely and managing tasks with increasing independence. 
+                        Regular check-ins with my supervisor, personal notes, task planning, and additional meetings when needed helped me stay organized and consistently 
+                        complete work on schedule. This structure also allowed me to prepare and rehearse ideas before presenting them to the team.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="skill">
+
+            <div class="row">
+
+                <div class="col-md-2 skill-number">
+                    05 - Literacy
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Technological Literacy</h3>
+                    <p><strong>Outcome:</strong> Achieved</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p>
+                     I advanced my technical understanding of formulas, coding logic, and the development environments used by my team. 
+                     Using flowcharts and logic diagrams helped me better understand complex conditions and determine which approaches 
+                     would be most efficient. I also became more comfortable working within our applications and development environments, 
+                     including connecting my formulas to the pricing data and processes they support.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+     TECHNOLOGIES
+=========================================== -->
+<section id="technology">
+
+    <div class="container">
+
+        <div class="section-number">
+            03 — TECHNOLOGIES & SKILLS
+        </div>
+
+        <h2 class="section-title">
+            What I worked<br>
+            with.
+        </h2>
+
+        <p class="section-intro mb-5">
+            My work term gave me experience with a variety of enterprise systems,
+            data analysis tools, and documentation software. I worked primarily
+            with JD Edwards and CPQ, while also using Databricks and Excel to
+            analyze and support pricing processes. 
+            <br>
+            <br>
+            Documentation and communication
+            were also a major part of my work, from creating step-by-step guides
+            to developing demonstrations, tutorials, and visual process diagrams.
+            <br>
+            <br>
+        </p>
+
+
+        <div class="row g-4">
+
+            <!-- CARD 01 -->
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-card-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Enterprise Systems & Automation
+                    </h3>
+
+                    <p>
+                        I worked primarily within JD Edwards, CPQ, and Oracle-based
+                        applications, becoming familiar with the fields, applications,
+                        and processes used by my team. I also used Orchestrator Studio
+                        to create workflows and logic for notifications and approvals,
+                        including processes involving managers, parts, and orders placed
+                        on hold. This gave me experience working with enterprise systems
+                        not only as a user, but also as someone developing and improving
+                        the processes within them.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 02 -->
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-card-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Data & Analysis
+                    </h3>
+
+                    <p>
+                        I used Databricks to analyze order data and better
+                        understand the information behind our pricing processes.
+                        I also worked extensively with Excel spreadsheets and
+                        formulas to organize data, develop pricing logic, and
+                        test different approaches before implementing solutions. A large part of my project included developing a consistent 
+                        pricing tool for both ATS Ohio sales quotes and Cambridge Life Sciences, which included handling currency exchanges, drafting formulas 
+                        for Markup GM results, Unit Costs, Profit Margin and item classification.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 03 -->
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-card-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Documentation & Communication
+                    </h3>
+
+                    <p>
+                        Documentation was an important part of my work. I used
+                        OneNote, Word, and PowerPoint to document processes,
+                        create tutorials, and prepare presentations and
+                        demonstrations. It was important for me to include step-by-step user entries, self populating field information, screenshots and visuals
+                        in order to thoroughly capture the correct use of the pricing tools I developed. I also created flowcharts and visual
+                        guides using PowerPoint, Snagit, and other editing tools
+                        to make technical processes and underlying logic explanations easier for others to follow.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
 
-   <!-- Main Title -->
-   <section id="home" class="container mt-4">
-    <h1 class="text-center display-5 fw-bold text-dark">
-      Aisha’s 8-Month Work Term Experience at Neatco
-    </h1>
-    <hr />
-  </div>
+<!-- ==========================================
+     REFLECTION
+=========================================== -->
 
-   <!-- Image Below Main Title -->
-   <img src="neatco.pic.jpeg" alt="Neatco Engineering" class="img-fluid mt-4" style="width: 50%;">
+<section id="reflection" class="reflection">
 
-  <!-- MAIN CONTENT -->
-  <div class="container mt-5">
+    <div class="container">
 
-    <!-- Introduction / Abstract -->
-    <section id="introduction" class="mb-5">
-    <br>
-      <h2 >Introduction</h2>
-      <p>Hello! My name is Aisha Khan, and I worked at Neatco Engineering Services Inc. from January 2025 to August 2025 for my 8 month co-op term. I have just recently wrapped up my term and want to share with you my experiences and technical and professional growth.
-        This website reflects on my experience working at Neatco, what I accomplished, and what I learned throughout the 8 months. It highlights the goals I have worked towards and achieved, and the projects I have contributed to. </p>
-        <br>
-    </section>
+        <div class="section-number">
+            04 — REFLECTION
+        </div>
 
-    <!-- Employer Info -->
-    <section id="employer" class="mb-5">
-      <h2 >About the Employer</h2>
-      <p>Neatco Engineering Services Inc. is an automation company located in Waterloo, Ontario. They specialize in Automation Machinery Manufacturing, creating products to enhance Artificial Intelligence for the Circular Economy. 
-        The company has employed over 50 people and is known for creating cutting-edge, practical AI applications. I had the pleasure to help create the official company website where anyone can feel free to learn more about Neatco. Click the button below!</p>
-     <!-- Purple Button -->
-    <div class="text-center mt-4">
-        <a href="https://www.neatcoeng.com" target="_blank" class="btn btn-purple btn-lg">Visit Neatco's Site</a>
-     </div>
-     <br>
-     <p>The area of Computer Science that is related to this company includes programming for training of neural networks, software integration, AI Backend Development, working with computer vision systems, and front-end development for computer vision interfaces. </p>
-     <br>
-    </section>
+        <h2 class="section-title">
+            What I<br>
+            learned.
+        </h2>
 
 
-    <!-- Job Description -->
-    <section id="job" class="mb-5">
-        <h2 >Job Description</h2>
-        <p>I worked as a Machine Vision Developer where I focused on the areas of machine vision and deep learning. I had the pleasure to assist in programming for training neural networks used in a variety
-          of projects, software integration and front-end development for computer vision interfaces. The work required skills in languages python and java, formats such as json, and occasional html and css-styling, some of which I learned in class and others I picked up on during the job.</p>
-      <p>Some of my duties included: </p>
-      <li>
-          Development: Research cutting edge tools from multiple libraries for use in AI systems.
-      </li>
-      <li> Programming: Work on updating software tools and interfaces used for current development projects. Update labelling tools to create datasets for artificial intelligence training (through the platform CVAT). 
-      </li>  
-      <li>Remote Assistance: Assist on-site workers with calibration, debugging, and improvements.
-      </li>  
-      <li>AI Backend Development: Work on the development of data harvesting for on-site systems allowing for continual retraining.
-      </li> 
-      <li>Work with computer vision systems and make libraries for camera interfaces (such as the Basler Camera products).
-      </li> 
-      <li>Communicate with industry partners, suppliers, and customers as required.
-      </li> 
-      <br>
-      </section>
+        <p class="reflection-text">
+            This co-op experience allowed me to grow significantly in both my technical 
+            and professional skills. One of my biggest areas of growth was critical and creative thinking, 
+            as the formulas and changes I developed became part of ATS's new price quoting system. I had the 
+            opportunity to present my ideas through walkthrough demonstrations and presentations, receive feedback 
+            from my team, and refine my work before implementing it into the new quoting environment. Through this 
+            process, I also strengthened my oral communication skills and became more confident in clearly explaining 
+            my ideas, progress, and technical work to managers and colleagues.
+        </p>
 
-      <!-- Goals / Learning Outcomes (January - May 2025) -->
-      <section id="goals" class="mb-5">
-        <h2 >Goals & Learning Outcomes (January - April 2025)</h2>
-        <p>When I first began my co-op, my goals focused on building a strong foundation as a junior developer and learning how to work effectively in an engineering environment. My objectives included:
-          <li>
-          COMMUNICATING - Integrative Communication: Enhance the ability to effectively communicate complex AI and machine vision concepts with cross-functional teams, ensuring clear understanding among technical and non-technical stakeholders.
-          </li>
-          <br>
-          <li>
-          CRITICAL & CREATIVE THINKING - Inquiry & Analysis: Develop strong analytical skills to assess and evaluate new AI technologies and approaches for machine vision, ensuring effective integration into workflows.
-          </li>
-          <br>
-          <li>
-          CRITICAL & CREATIVE THINKING – Problem Solving: Strengthen problem-solving skills in identifying, diagnosing, and resolving technical challenges related to machine vision software and AI solutions.
-          </li>
-          <br>
-          <li>
-          PERSONAL LEARNING GOAL: Develop a deeper understanding of AI-driven machine vision technologies, focusing on neural networks, camera systems, and integration into manufacturing systems, particularly for waste management.</p>
-          </li>
-          <br>
-          <li>
-          PROFESSIONAL & ETHICAL BEHAVIOUR – Personal Organization/Time Management: Improve personal organization and time management to effectively balance multiple tasks and responsibilities in a fast-paced work environment.
-          </li>
-        <br>
-        <strong>Reflections on Achievement</strong>
-        <p>During the first four months, I made significant progress in all of these areas. I enhanced my ability to communicate technical topics by collaborating with cross-functional teams on projects like robot neural network annotations through CVAT, website development using HTML, CSS, and JavaScript, and coordinating marketing email campaigns. These experiences helped me translate complex technical concepts into clear explanations, benefiting both technical and non-technical colleagues.</p>
-        <p>My analytical and creative thinking skills grew through evaluating annotation structures for machine learning training, exploring new coding techniques for email automation, and reviewing Python and JSON workflows to improve system performance. This allowed me to experiment with efficient and scalable approaches, apply insights from data analytics, and make data-driven decisions.</p>
-        <p>Problem-solving opportunities arose in debugging Python code for neural network systems, fixing web development issues, handling cross-platform email rendering, and troubleshooting hardware-software interactions in weld detection motor projects. Tackling these challenges taught me to break down complex problems systematically, test multiple solutions, and document processes for team knowledge sharing.</p>
-        <p>I also deepened my understanding of AI-driven machine vision through hands-on work with neural networks, camera systems, and integration into robotic and manufacturing workflows. Experimenting with trial-and-error in image annotation and observing model responses helped me connect theoretical concepts to real-world applications in waste management and environmental innovation.</p>
-        <p>Finally, I strengthened my organization and time management by balancing multiple projects simultaneously, using daily logbooks, milestone planning, and regular team meetings to stay on track. Launching the new company website under tight deadlines and coordinating marketing campaigns taught me how to prioritize effectively, communicate proactively, and maintain high-quality outputs under pressure. By the end of this period, I felt confident contributing independently to projects, collaborating across teams, and managing complex workloads efficiently.</p>
-        <p>During the term, I was able to achieve the above goals alongside facing challenges when working with new software, hardware, experiencing trial and error, tight deadlines and lots of problem-solving. However, these experiences made project completion all the more rewarding. Seeing our efforts come to life with quality, was the best feeling ever, and learning as much
-          as I did along the way most definitely helped me prepare both technically and non-technically for future co-ops and jobs.</p>
-          <br>
-      </section>
+        <br><br>
 
-      <!-- Goals / Learning Outcomes (May - August 2025) -->
-    <section id="goals-second" class="mb-5">
-     <h2>Goals & Learning Outcomes (May - August 2025)</h2>
-      <p>With my foundation established in the first four months, I set more advanced goals aimed at applying critical thinking, expanding my technical scope, and improving professional skills. My objectives included:</p>
-       <li>
-        COMMUNICATING – Integrative Communication: Improve my ability to explain advanced AI and machine vision concepts to diverse technical and non-technical audiences.
-      </li>
-      <br>
-      <li>
-        CRITICAL & CREATIVE THINKING – Inquiry & Analysis: Research and pilot new AI/machine vision tools and frameworks, applying innovative approaches.
-      </li>
-      <br>
-      <li>
-        CRITICAL & CREATIVE THINKING – Problem Solving: Take ownership of diagnosing and resolving complex system issues.
-      </li>
-      <br>
-      <li>
-        PERSONAL TECHNICAL LEARNING – AI/ML Specialization: Deepen expertise in AI-driven machine vision, focusing on neural network optimization and sensor integration.
-      </li>
-      <br>
-      <li>
-        PROFESSIONAL & ETHICAL BEHAVIOUR – Time Management: Strengthen organization and workload management to deliver projects effectively.
-      </li>
-      <br>
-      <br>
-    </section>
+        <p class="reflection-text">
+            Throughout the term, I also developed a stronger understanding of ATS and its global operations. Working with 
+            different pricing systems, currencies, rounding rules, and regulations helped me understand how different branches 
+            and divisions work together. At the same time, I became more comfortable with the development environments and with 
+            using flowcharts to plan the logic behind my formulas. Managing my time through regular check-ins, structured plans, 
+            and preparation for presentations also helped me stay organized and complete my work effectively. Overall, this experience
+             allowed me to build on my technical knowledge while developing the communication, organization, problem-solving, and professional 
+             skills that I can carry forward into my degree and future career.
+        </p>
 
-      <!-- Projects Section -->
-  <section id="projects" class="mb-5">
-    <h2>Projects / Contributions (May – August 2025)</h2>
-    <p>During the second half of my 8-month co-op, I expanded my role into automation, orchestration, and quality control workflows. These tasks were more technical, and built off of what I had previously learned in the first 4 months of the work term. Some of the key projects I worked on:</p>
-    <ul>
-      <li>
-        <strong>Windmill Workflow Automation</strong>  
-        <p>In this project, I worked on building and running workflows in Windmill.dev, a workflow orchestration platform. 
-          This included creating scripts that automate repetitive tasks, chaining together API calls, and testing data flows across different systems.</p>
-        <strong>Skills / Learnings:</strong> 
-        <ul>
-          <li>
-            <p>Learned how to design and execute workflows in a serverless-like environment.</p>
-            </li>
-            <li>
-            <p>Worked with REST APIs (sending/receiving JSON payloads, handling authentication).</p>
-            </li>
-            <li>
-            <p>Debugging workflow errors and using Windmill’s logs/monitoring to ensure reliability.</p>
-            </li>
-            <li>
-            <p>Understanding how automation tools fit into a larger data pipeline. </p>
-            </li>
-        </ul>
-      </li>
-      <li>
-        <strong>LLM Integration with Ollama</strong>  
-        <p>In this project, I experimented with integrating large language models (LLMs) locally using Ollama, a tool for running models like LLaMA on-device. 
-          A key project was having the model read JSON files from an object detection system and provide structured quality-control analysis (e.g., counting rivets, detecting anomalies, summarizing outputs).</p>
-        <strong>Skills / Learnings:</strong> 
-        <ul>
-          <li>
-            <p>How to prompt engineer effectively: crafting instructions so the LLM gives structured, relevant outputs.</p>
-            </li>
-            <li>
-            <p>Understanding model inference pipelines (how prompts and responses are handled programmatically).</p>
-            </li>
-            <li>
-            <p>Making HTTP API requests to Ollama (requests.post() in Python) and parsing model responses.</p>
-            </li>
-            <li>
-            <p>Handling large structured data (JSON) as LLM input and managing context size. </p>
-            </li>
-        </ul>
-      </li>
-      <li>
-        <strong>Apache Airflow DAG Development</strong>  
-        <p>In this project, I built custom Airflow DAGs (Directed Acyclic Graphs) to automate and schedule data processing and model analysis tasks. 
-          For example, a DAG that loads a JSON file from an object detection pipeline, sends it to Ollama for analysis, and logs the structured response for further use.</p>
-        <strong>Skills / Learnings:</strong> 
-        <ul>
-          <li>
-            <p>Writing custom Python tasks (PythonOperator).</p>
-            </li>
-            <li>
-            <p>Proper DAG structuring: keeping logic inside functions, avoiding code at import time.</p>
-            </li>
-            <li>
-            <p>Debugging why DAGs don’t show up in the Airflow UI (import errors, missing dependencies).</p>
-            </li>
-            <li>
-            <p>Running and monitoring tasks via Airflow Scheduler & Webserver.</p>
-            </li>
-            <li>
-              <p>Understanding orchestration concepts: how Airflow controls task dependencies, retries, logging, and scheduling.</p>
-            </li>
-        </ul>
-      </li>
-      <li>
-        <strong>Object Detection Data Quality Control</strong>  
-        <p>In this final project, part of my work was handling output JSON files from a computer vision system detecting rivets, a project my coworkers were simultaneously developing.
-          The goal was to ensure data quality and provide summaries through Ollama like: number of detected objects, distribution of “good” vs “bad” rivets, and possible gaps or inconsistencies.</p>
-          <strong>Skills / Learnings:</strong> 
-          <ul>
-          <li>
-            <p>Inspecting large JSON datasets (parsing, summarizing, validating fields).</p>
-            </li>
-            <li>
-            <p>Identifying issues like empty arrays, missing metadata, or inconsistent object labeling.</p>
-            </li>
-            <li>
-            <p>Linking ML outputs to QC processes and understanding how to evaluate if results are trustworthy.</p>
-            </li>
-            <li>
-            <p>Thinking critically about pipeline reliability (is empty JSON a valid result or an error?).</p>
-            </li>
-        </ul>
-      </li>
-      <li>
-          <strong>Overall Takeaways</strong> 
-          <ul>
-            <li>
-            <p>Got hands-on with workflow automation tools (Windmill, Airflow).</p>
-            </li>
-            <li>
-            <p>Learned how to integrate LLMs into data pipelines (Ollama + Python).</p>
-            </li>
-            <li>
-            <p>Sharpened Python skills: working with JSON, APIs, and modular task functions.</p>
-            </li>
-            <li>
-            <p>Built understanding of orchestration, automation, and quality control in ML pipelines.</p>
-            </li>
-          </ul>
-        </li>
-      </ul>
-          <br>
-          <strong>Reflections on Achievement (of Goals)</strong>
-          <p>During this second four-month period, I advanced significantly in both technical and professional capabilities. I enhanced my communication skills by leading technical demos on LLM workflows and Airflow pipelines, using diagrams and flowcharts to simplify complex processes. Teammates provided positive feedback that my explanations improved clarity and understanding, and mentoring a peer on JSON structuring reinforced my ability to convey complex concepts simply.</p>
-          <p>My critical and creative thinking developed as I researched emerging AI frameworks, explored LLM workflow techniques, and tested neural network training variations. These experiments resulted in measurable performance improvements, and documenting and sharing my findings with the team helped guide data-driven decisions and encouraged collaborative innovation.</p>
-          <p>I grew as a problem solver by taking ownership of challenging technical issues. I debugged inconsistencies in the weld detection pipeline, including Raspberry Pi motor performance and socket communication errors and resolved Airflow pipeline bugs. Documenting these troubleshooting processes in knowledge base “mini-guides” not only supported team learning but also highlighted my initiative and persistence.</p>
-          <p>My personal technical expertise expanded through tuning neural networks for higher accuracy, collaborating with R&D on sensor fusion experiments, and optimizing real-time system performance. I gained hands-on exposure to waste management use cases, connecting my technical work to real-world applications and impact.</p>
-          <p>Finally, I strengthened professional skills in time management and organization. By adopting Agile/Kanban frameworks, setting milestones, conducting self-check-ins, and proactively flagging risks with my supervisor, I maintained consistent progress across multiple projects and built trust in my ability to deliver high-quality work independently.</p>
-          <p>Overall, these months allowed me to progress from building foundational coding and collaboration skills to independently leading advanced workflows, integrating AI/ML tools, and contributing innovative solutions. My growth during this period demonstrates increased technical confidence, stronger communication, improved problem-solving abilities, and enhanced professional organization.</p>
-    <br>
-  </section>
+    </div>
 
-   <!-- Conclusion -->
-  <section id="conclusion" class="mb-5">
-    <h2>Conclusion</h2>
-    <p>This 8-month co-op was a pivotal step in my growth as a computer science student and aspiring software developer. Across the first four months, I built a strong foundation in Python, JSON, HTML, CSS, and JavaScript, gaining hands-on experience with neural network annotations in CVAT, website development, and mass email automation. I learned to communicate complex technical concepts, collaborate effectively with cross-functional teams, and manage multiple projects under tight deadlines.</p>
-    <p>During the second four months, I expanded my role into advanced workflow automation, orchestration, and quality control. I worked with tools such as Windmill and Airflow, integrated LLMs with Ollama, tuned neural networks for improved performance, and contributed to sensor fusion and waste management projects. These experiences strengthened my problem-solving skills, deepened my technical expertise, and allowed me to take ownership of complex challenges, while continuing to improve communication, documentation, and time management practices.</p>
-    <p>Overall, this co-op provided me with meaningful opportunities to grow technically and professionally. I gained practical experience bridging software and hardware, applying AI and machine vision in real-world systems, and contributing to innovative projects. The guidance and collaboration at Neatco Engineering Services Inc. made this a transformative and beginner-friendly environment, and I would highly recommend it to fellow students seeking a challenging yet supportive co-op experience.</p>
-    <br>
-  </section>
-
-  <!--Image at the end-->
-  <img src="WIN_20250822_13_21_31_Pro.jpg" alt="Neatco Engineering New Image" class="img-fluid mt-4" style="width: 100%;">
-  <br>
-
-    <!-- Acknowledgments -->
-    <section id="acknowledgments" class="mb-5">
-      <h2 >Acknowledgments</h2>
-      <p>I would like to thank my supervisor Tony, my co-workers / co-op student colleagues, and Neatco's CEO Hamid Karbasi for welcoming me and allowing me to explore my full potential as a Machine Vision Developer. I am honoured to have worked with them, gained such valuable experience and have had such an exceptional time. 
-        Their guidance and support made this work term extremely meaningful, and I hope to carry the new-set skills I have attained further into my career as a computer science student.</p>
-    <p>For company project privacy, I will not be including further images of projects-- software or hardware. </p>
-    <br>
-    <br>
-    </section>
-    
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-    <small>&copy; 2025 Aisha Khan. All rights reserved.</small>
-  </footer>
-
-  <script src="js/bootstrap.bundle.min.js"></script>
+</section>
 
 
-  <!-- Bootstrap JS (MUST BE INCLUDED FOR NAVBAR TO WORK) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoOeA6ugF5StQIAqVgRVzpbzo5smXKp4YfRvH+ABzjcz0jz" crossorigin="anonymous"></script>
+
+<!-- ==========================================
+     HIGHLIGHT
+=========================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div class="highlight">
+
+            I'd like to acknowledge my supervisor Ama Al-Abassi and my Manager Natalia Arias 
+            for their repeated mentorship, guidance and support througout my work term.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================
+     LOOKING AHEAD
+=========================================== -->
+
+<section id="conclusions" class="conclusions">
+
+    <div class="container">
+
+        <div class="section-number">
+            05 — CONCLUSIONS
+        </div>
+
+        <h2 class="section-title">
+            What's next?
+        </h2>
+
+        <p class="section-intro">
+            My next four months at ATS will give me the opportunity to continue building on everything I have learned so far. I look forward to
+            refining the skills I have developed, improve the solutions I have already contributed to, and take on new challenges with a stronger 
+            understanding of both the technical and professional side of software development.
+            <br>
+            <br>
+            Looking beyond this co-op, I want to carry these experiences into the rest of my Computer Science degree, future co-op opportunities, and eventually a full-time career in software development.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================
+     FOOTER
+=========================================== -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <small>
+            © 2026 Aisha Khan · Co-op Experience
+        </small>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JavaScript -->
+<script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
